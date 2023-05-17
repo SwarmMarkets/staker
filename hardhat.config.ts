@@ -27,7 +27,7 @@ if (process.env.RUN_COVERAGE == '1') {
    * See https://github.com/sc-forks/solidity-coverage/issues/417#issuecomment-730526466
    */
   console.info('Using coverage compiler settings')
-  DEFAULT_COMPILER_SETTINGS.settings.details = {
+  DEFAULT_COMPILER_SETTINGS.settings.optimizer.details = {
     yul: true,
     yulDetails: {
       stackAllocation: true,
