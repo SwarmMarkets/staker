@@ -12,194 +12,197 @@ import {
   BaseContract,
   ContractTransaction,
   CallOverrides,
-} from 'ethers'
-import { BytesLike } from '@ethersproject/bytes'
-import { Listener, Provider } from '@ethersproject/providers'
-import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
-import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
+} from "ethers";
+import { BytesLike } from "@ethersproject/bytes";
+import { Listener, Provider } from "@ethersproject/providers";
+import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
 interface TestRewardMathInterface extends ethers.utils.Interface {
   functions: {
-    'computeRewardAmount(tuple)': FunctionFragment
-  }
+    "computeRewardAmount(tuple)": FunctionFragment;
+  };
 
   encodeFunctionData(
-    functionFragment: 'computeRewardAmount',
+    functionFragment: "computeRewardAmount",
     values: [
       {
-        totalRewardUnclaimed: BigNumberish
-        totalSecondsClaimedX128: BigNumberish
-        startTime: BigNumberish
-        endTime: BigNumberish
-        vestingPeriod: BigNumberish
-        liquidity: BigNumberish
-        secondsPerLiquidityInsideInitialX128: BigNumberish
-        secondsPerLiquidityInsideX128: BigNumberish
-        secondsInsideInitial: BigNumberish
-        secondsInside: BigNumberish
-        currentTime: BigNumberish
+        totalRewardUnclaimed: BigNumberish;
+        totalSecondsClaimedX128: BigNumberish;
+        startTime: BigNumberish;
+        endTime: BigNumberish;
+        vestingPeriod: BigNumberish;
+        liquidity: BigNumberish;
+        secondsPerLiquidityInsideInitialX128: BigNumberish;
+        secondsPerLiquidityInsideX128: BigNumberish;
+        secondsInsideInitial: BigNumberish;
+        secondsInside: BigNumberish;
+        currentTime: BigNumberish;
       }
     ]
-  ): string
+  ): string;
 
-  decodeFunctionResult(functionFragment: 'computeRewardAmount', data: BytesLike): Result
+  decodeFunctionResult(
+    functionFragment: "computeRewardAmount",
+    data: BytesLike
+  ): Result;
 
-  events: {}
+  events: {};
 }
 
 export class TestRewardMath extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this
-  attach(addressOrName: string): this
-  deployed(): Promise<this>
+  connect(signerOrProvider: Signer | Provider | string): this;
+  attach(addressOrName: string): this;
+  deployed(): Promise<this>;
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this
+  ): this;
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this
+  ): this;
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this
+  ): this;
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this
+  ): this;
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this
+  ): this;
 
-  listeners(eventName?: string): Array<Listener>
-  off(eventName: string, listener: Listener): this
-  on(eventName: string, listener: Listener): this
-  once(eventName: string, listener: Listener): this
-  removeListener(eventName: string, listener: Listener): this
-  removeAllListeners(eventName?: string): this
+  listeners(eventName?: string): Array<Listener>;
+  off(eventName: string, listener: Listener): this;
+  on(eventName: string, listener: Listener): this;
+  once(eventName: string, listener: Listener): this;
+  removeListener(eventName: string, listener: Listener): this;
+  removeAllListeners(eventName?: string): this;
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: TestRewardMathInterface
+  interface: TestRewardMathInterface;
 
   functions: {
     computeRewardAmount(
       params: {
-        totalRewardUnclaimed: BigNumberish
-        totalSecondsClaimedX128: BigNumberish
-        startTime: BigNumberish
-        endTime: BigNumberish
-        vestingPeriod: BigNumberish
-        liquidity: BigNumberish
-        secondsPerLiquidityInsideInitialX128: BigNumberish
-        secondsPerLiquidityInsideX128: BigNumberish
-        secondsInsideInitial: BigNumberish
-        secondsInside: BigNumberish
-        currentTime: BigNumberish
+        totalRewardUnclaimed: BigNumberish;
+        totalSecondsClaimedX128: BigNumberish;
+        startTime: BigNumberish;
+        endTime: BigNumberish;
+        vestingPeriod: BigNumberish;
+        liquidity: BigNumberish;
+        secondsPerLiquidityInsideInitialX128: BigNumberish;
+        secondsPerLiquidityInsideX128: BigNumberish;
+        secondsInsideInitial: BigNumberish;
+        secondsInside: BigNumberish;
+        currentTime: BigNumberish;
       },
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber] & {
-        reward: BigNumber
-        maxReward: BigNumber
-        secondsInsideX128: BigNumber
+        reward: BigNumber;
+        maxReward: BigNumber;
+        secondsInsideX128: BigNumber;
       }
-    >
-  }
+    >;
+  };
 
   computeRewardAmount(
     params: {
-      totalRewardUnclaimed: BigNumberish
-      totalSecondsClaimedX128: BigNumberish
-      startTime: BigNumberish
-      endTime: BigNumberish
-      vestingPeriod: BigNumberish
-      liquidity: BigNumberish
-      secondsPerLiquidityInsideInitialX128: BigNumberish
-      secondsPerLiquidityInsideX128: BigNumberish
-      secondsInsideInitial: BigNumberish
-      secondsInside: BigNumberish
-      currentTime: BigNumberish
+      totalRewardUnclaimed: BigNumberish;
+      totalSecondsClaimedX128: BigNumberish;
+      startTime: BigNumberish;
+      endTime: BigNumberish;
+      vestingPeriod: BigNumberish;
+      liquidity: BigNumberish;
+      secondsPerLiquidityInsideInitialX128: BigNumberish;
+      secondsPerLiquidityInsideX128: BigNumberish;
+      secondsInsideInitial: BigNumberish;
+      secondsInside: BigNumberish;
+      currentTime: BigNumberish;
     },
     overrides?: CallOverrides
   ): Promise<
     [BigNumber, BigNumber, BigNumber] & {
-      reward: BigNumber
-      maxReward: BigNumber
-      secondsInsideX128: BigNumber
+      reward: BigNumber;
+      maxReward: BigNumber;
+      secondsInsideX128: BigNumber;
     }
-  >
+  >;
 
   callStatic: {
     computeRewardAmount(
       params: {
-        totalRewardUnclaimed: BigNumberish
-        totalSecondsClaimedX128: BigNumberish
-        startTime: BigNumberish
-        endTime: BigNumberish
-        vestingPeriod: BigNumberish
-        liquidity: BigNumberish
-        secondsPerLiquidityInsideInitialX128: BigNumberish
-        secondsPerLiquidityInsideX128: BigNumberish
-        secondsInsideInitial: BigNumberish
-        secondsInside: BigNumberish
-        currentTime: BigNumberish
+        totalRewardUnclaimed: BigNumberish;
+        totalSecondsClaimedX128: BigNumberish;
+        startTime: BigNumberish;
+        endTime: BigNumberish;
+        vestingPeriod: BigNumberish;
+        liquidity: BigNumberish;
+        secondsPerLiquidityInsideInitialX128: BigNumberish;
+        secondsPerLiquidityInsideX128: BigNumberish;
+        secondsInsideInitial: BigNumberish;
+        secondsInside: BigNumberish;
+        currentTime: BigNumberish;
       },
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber] & {
-        reward: BigNumber
-        maxReward: BigNumber
-        secondsInsideX128: BigNumber
+        reward: BigNumber;
+        maxReward: BigNumber;
+        secondsInsideX128: BigNumber;
       }
-    >
-  }
+    >;
+  };
 
-  filters: {}
+  filters: {};
 
   estimateGas: {
     computeRewardAmount(
       params: {
-        totalRewardUnclaimed: BigNumberish
-        totalSecondsClaimedX128: BigNumberish
-        startTime: BigNumberish
-        endTime: BigNumberish
-        vestingPeriod: BigNumberish
-        liquidity: BigNumberish
-        secondsPerLiquidityInsideInitialX128: BigNumberish
-        secondsPerLiquidityInsideX128: BigNumberish
-        secondsInsideInitial: BigNumberish
-        secondsInside: BigNumberish
-        currentTime: BigNumberish
+        totalRewardUnclaimed: BigNumberish;
+        totalSecondsClaimedX128: BigNumberish;
+        startTime: BigNumberish;
+        endTime: BigNumberish;
+        vestingPeriod: BigNumberish;
+        liquidity: BigNumberish;
+        secondsPerLiquidityInsideInitialX128: BigNumberish;
+        secondsPerLiquidityInsideX128: BigNumberish;
+        secondsInsideInitial: BigNumberish;
+        secondsInside: BigNumberish;
+        currentTime: BigNumberish;
       },
       overrides?: CallOverrides
-    ): Promise<BigNumber>
-  }
+    ): Promise<BigNumber>;
+  };
 
   populateTransaction: {
     computeRewardAmount(
       params: {
-        totalRewardUnclaimed: BigNumberish
-        totalSecondsClaimedX128: BigNumberish
-        startTime: BigNumberish
-        endTime: BigNumberish
-        vestingPeriod: BigNumberish
-        liquidity: BigNumberish
-        secondsPerLiquidityInsideInitialX128: BigNumberish
-        secondsPerLiquidityInsideX128: BigNumberish
-        secondsInsideInitial: BigNumberish
-        secondsInside: BigNumberish
-        currentTime: BigNumberish
+        totalRewardUnclaimed: BigNumberish;
+        totalSecondsClaimedX128: BigNumberish;
+        startTime: BigNumberish;
+        endTime: BigNumberish;
+        vestingPeriod: BigNumberish;
+        liquidity: BigNumberish;
+        secondsPerLiquidityInsideInitialX128: BigNumberish;
+        secondsPerLiquidityInsideX128: BigNumberish;
+        secondsInsideInitial: BigNumberish;
+        secondsInside: BigNumberish;
+        currentTime: BigNumberish;
       },
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>
-  }
+    ): Promise<PopulatedTransaction>;
+  };
 }

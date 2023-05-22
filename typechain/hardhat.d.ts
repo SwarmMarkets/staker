@@ -2,128 +2,134 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { ethers } from 'ethers'
-import { FactoryOptions, HardhatEthersHelpers as HardhatEthersHelpersBase } from '@nomiclabs/hardhat-ethers/types'
+import { ethers } from "ethers";
+import {
+  FactoryOptions,
+  HardhatEthersHelpers as HardhatEthersHelpersBase,
+} from "@nomiclabs/hardhat-ethers/types";
 
-import * as Contracts from '.'
+import * as Contracts from ".";
 
-declare module 'hardhat/types/runtime' {
+declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
-      name: 'IERC165',
+      name: "IERC165",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC165__factory>
+    ): Promise<Contracts.IERC165__factory>;
     getContractFactory(
-      name: 'IERC20',
+      name: "IERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC20__factory>
+    ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
-      name: 'IERC721',
+      name: "IERC721",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721__factory>
+    ): Promise<Contracts.IERC721__factory>;
     getContractFactory(
-      name: 'IERC721Enumerable',
+      name: "IERC721Enumerable",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721Enumerable__factory>
+    ): Promise<Contracts.IERC721Enumerable__factory>;
     getContractFactory(
-      name: 'IERC721Metadata',
+      name: "IERC721Metadata",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721Metadata__factory>
+    ): Promise<Contracts.IERC721Metadata__factory>;
     getContractFactory(
-      name: 'IERC721Receiver',
+      name: "IERC721Receiver",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721Receiver__factory>
+    ): Promise<Contracts.IERC721Receiver__factory>;
     getContractFactory(
-      name: 'IERC20Minimal',
+      name: "IERC20Minimal",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC20Minimal__factory>
+    ): Promise<Contracts.IERC20Minimal__factory>;
     getContractFactory(
-      name: 'IUniswapV3Factory',
+      name: "IUniswapV3Factory",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3Factory__factory>
+    ): Promise<Contracts.IUniswapV3Factory__factory>;
     getContractFactory(
-      name: 'IUniswapV3Pool',
+      name: "IUniswapV3Pool",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3Pool__factory>
+    ): Promise<Contracts.IUniswapV3Pool__factory>;
     getContractFactory(
-      name: 'IUniswapV3PoolActions',
+      name: "IUniswapV3PoolActions",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3PoolActions__factory>
+    ): Promise<Contracts.IUniswapV3PoolActions__factory>;
     getContractFactory(
-      name: 'IUniswapV3PoolDerivedState',
+      name: "IUniswapV3PoolDerivedState",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3PoolDerivedState__factory>
+    ): Promise<Contracts.IUniswapV3PoolDerivedState__factory>;
     getContractFactory(
-      name: 'IUniswapV3PoolEvents',
+      name: "IUniswapV3PoolEvents",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3PoolEvents__factory>
+    ): Promise<Contracts.IUniswapV3PoolEvents__factory>;
     getContractFactory(
-      name: 'IUniswapV3PoolImmutables',
+      name: "IUniswapV3PoolImmutables",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3PoolImmutables__factory>
+    ): Promise<Contracts.IUniswapV3PoolImmutables__factory>;
     getContractFactory(
-      name: 'IUniswapV3PoolOwnerActions',
+      name: "IUniswapV3PoolOwnerActions",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3PoolOwnerActions__factory>
+    ): Promise<Contracts.IUniswapV3PoolOwnerActions__factory>;
     getContractFactory(
-      name: 'IUniswapV3PoolState',
+      name: "IUniswapV3PoolState",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3PoolState__factory>
+    ): Promise<Contracts.IUniswapV3PoolState__factory>;
     getContractFactory(
-      name: 'Multicall',
+      name: "Multicall",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Multicall__factory>
+    ): Promise<Contracts.Multicall__factory>;
     getContractFactory(
-      name: 'IERC721Permit',
+      name: "IERC721Permit",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721Permit__factory>
+    ): Promise<Contracts.IERC721Permit__factory>;
     getContractFactory(
-      name: 'IMulticall',
+      name: "IMulticall",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IMulticall__factory>
+    ): Promise<Contracts.IMulticall__factory>;
     getContractFactory(
-      name: 'INonfungiblePositionManager',
+      name: "INonfungiblePositionManager",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.INonfungiblePositionManager__factory>
+    ): Promise<Contracts.INonfungiblePositionManager__factory>;
     getContractFactory(
-      name: 'IPeripheryImmutableState',
+      name: "IPeripheryImmutableState",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IPeripheryImmutableState__factory>
+    ): Promise<Contracts.IPeripheryImmutableState__factory>;
     getContractFactory(
-      name: 'IPeripheryPayments',
+      name: "IPeripheryPayments",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IPeripheryPayments__factory>
+    ): Promise<Contracts.IPeripheryPayments__factory>;
     getContractFactory(
-      name: 'IPoolInitializer',
+      name: "IPoolInitializer",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IPoolInitializer__factory>
+    ): Promise<Contracts.IPoolInitializer__factory>;
     getContractFactory(
-      name: 'IUniswapV3Staker',
+      name: "IUniswapV3Staker",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV3Staker__factory>
+    ): Promise<Contracts.IUniswapV3Staker__factory>;
     getContractFactory(
-      name: 'TestERC20',
+      name: "TestERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.TestERC20__factory>
+    ): Promise<Contracts.TestERC20__factory>;
     getContractFactory(
-      name: 'TestIncentiveId',
+      name: "TestIncentiveId",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.TestIncentiveId__factory>
+    ): Promise<Contracts.TestIncentiveId__factory>;
     getContractFactory(
-      name: 'TestRewardMath',
+      name: "TestRewardMath",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.TestRewardMath__factory>
+    ): Promise<Contracts.TestRewardMath__factory>;
     getContractFactory(
-      name: 'UniswapV3Staker',
+      name: "UniswapV3Staker",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.UniswapV3Staker__factory>
+    ): Promise<Contracts.UniswapV3Staker__factory>;
 
     // default types
-    getContractFactory(name: string, signerOrOptions?: ethers.Signer | FactoryOptions): Promise<ethers.ContractFactory>
+    getContractFactory(
+      name: string,
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<ethers.ContractFactory>;
     getContractFactory(
       abi: any[],
       bytecode: ethers.utils.BytesLike,
       signer?: ethers.Signer
-    ): Promise<ethers.ContractFactory>
+    ): Promise<ethers.ContractFactory>;
   }
 }
