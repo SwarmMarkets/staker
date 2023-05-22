@@ -44,6 +44,7 @@
     "@typescript-eslint/parser": "^4.26.0",
     "chai": "^4.2.0",
     "console-log-level": "^1.4.1",
+    "dotenv": "^16.0.3",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-unused-imports": "^1.1.1",
