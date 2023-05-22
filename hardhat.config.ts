@@ -8,18 +8,18 @@ import { HardhatUserConfig } from 'hardhat/config'
 import { SolcUserConfig } from 'hardhat/types'
 import 'solidity-coverage'
 
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv'
+dotenv.config()
 
 // Ensure that we have all the environment variables we need.
-const mnemonic = process.env.MNEMONIC || '';
-const privateKey = process.env.PRIVATE_KEY || '';
+const mnemonic = process.env.MNEMONIC || ''
+const privateKey = process.env.PK || ''
 
-const etherscanApiKey = process.env.ETHERSCAN_API_KEY || '';
-const polyscanApiKey = process.env.POLYSCAN_API_KEY || '';
+const etherscanApiKey = process.env.ETHERSCAN_API_KEY || ''
+const polyscanApiKey = process.env.POLYSCAN_API_KEY || ''
 
-const infuraApiKey = process.env.INFURA_API_KEY;
-const alchemyApiKey = process.env.ALCHEMY_API_KEY;
+const infuraApiKey = process.env.INFURA_API_KEY
+const alchemyApiKey = process.env.ALCHEMY_API_KEY
 
 const DEFAULT_COMPILER_SETTINGS: SolcUserConfig = {
   version: '0.7.6',
@@ -88,7 +88,7 @@ const config: HardhatUserConfig = {
     mumbai: {
       url: `https://polygon-mumbai.g.alchemy.com/v2/${alchemyApiKey}`,
       chainId: 80001,
-      accounts: { mnemonic },
+      accounts: [privateKey],
       gas: 2100000,
       gasPrice: 45000000000, // 45
       gasMultiplier: 2,
@@ -117,6 +117,4 @@ const config: HardhatUserConfig = {
     apiKey: etherscanApiKey || polyscanApiKey,
   },
 };
-
-
 export default config
