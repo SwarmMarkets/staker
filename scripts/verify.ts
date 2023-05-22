@@ -1,9 +1,9 @@
-import { verifyContract } from './helpers/verify-contract';
+import { verifyContract } from './helpers/verify-contract'
 
-const contract = '';
+const contract = ''
 
 async function main(): Promise<void> {
-  await verifyContract(contract);
+  await verifyContract(contract)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -11,6 +11,6 @@ async function main(): Promise<void> {
 main()
   .then(() => process.exit(0))
   .catch((error: Error) => {
-    console.error(error);
-    process.exit(1);
-  });
+    console.error(error)
+    process.exit(1)
+  })

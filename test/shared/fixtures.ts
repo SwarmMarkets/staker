@@ -55,7 +55,7 @@ export const v3RouterFixture: Fixture<{
       bytecode: SwapRouter.bytecode,
       abi: SwapRouter.abi,
     },
-    [factory.address, weth9.address]
+    [factory.address, weth9.address],
   )) as unknown) as ISwapRouter
 
   return { factory, weth9, router }
@@ -103,7 +103,7 @@ export const uniswapFactoryFixture: Fixture<UniswapFactoryFixture> = async (wall
     },
     {
       NFTDescriptor: nftDescriptorLibrary.address,
-    }
+    },
   )
 
   const positionDescriptor = await waffle.deployContract(
@@ -112,18 +112,18 @@ export const uniswapFactoryFixture: Fixture<UniswapFactoryFixture> = async (wall
       bytecode: linkedBytecode,
       abi: NonfungibleTokenPositionDescriptor.abi,
     },
-    [tokens[0].address]
+    [tokens[0].address],
   )
 
   const nftFactory = new ethers.ContractFactory(
     NonfungiblePositionManagerJson.abi,
     NonfungiblePositionManagerJson.bytecode,
-    wallets[0]
+    wallets[0],
   )
   const nft = (await nftFactory.deploy(
     factory.address,
     weth9.address,
-    positionDescriptor.address
+    positionDescriptor.address,
   )) as INonfungiblePositionManager
 
   tokens.sort((a, b) => (a.address.toLowerCase() < b.address.toLowerCase() ? -1 : 1))
@@ -151,7 +151,7 @@ export const mintPosition = async (
     amount0Min: number
     amount1Min: number
     deadline: number
-  }
+  },
 ): Promise<string> => {
   const transferFilter = nft.filters.Transfer(null, null, null)
   const transferTopic = nft.interface.getEventTopic('Transfer')
@@ -175,7 +175,7 @@ export const mintPosition = async (
       },
       {
         gasLimit: MAX_GAS_LIMIT,
-      }
+      },
     )
   ).wait()
 

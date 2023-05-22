@@ -23,7 +23,7 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(20).shl(128).div(10),
       secondsInsideInitial: 0,
       secondsInside: 0,
-      currentTime: 120
+      currentTime: 120,
     })
     // 1000 * 0.5 * 0.2
     expect(reward).to.eq(100)
@@ -44,11 +44,11 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(20).shl(128).div(10),
       secondsInsideInitial: 0,
       secondsInside: 20,
-      currentTime: 120
+      currentTime: 120,
     })
     // 1000 * 0.5 * 0.2 * 0.5
     expect(reward).to.eq(50)
-    
+
     // 1000 * 0.5 * 0.2
     expect(maxReward).to.eq(100)
 
@@ -68,7 +68,7 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(100).shl(128).div(100),
       secondsInsideInitial: 0,
       secondsInside: 0,
-      currentTime: 300
+      currentTime: 300,
     })
     // half the reward goes to the staker, the other half goes to those staking after the period
     expect(reward).to.eq(500)
@@ -88,7 +88,7 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(100).shl(128).div(100),
       secondsInsideInitial: 0,
       secondsInside: 0,
-      currentTime: 201
+      currentTime: 201,
     })
     // the reward decays by up to the reward rate per second
     expect(reward).to.eq(990)
@@ -108,7 +108,7 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(20).shl(128).div(10),
       secondsInsideInitial: 0,
       secondsInside: 0,
-      currentTime: 120
+      currentTime: 120,
     })
     expect(reward).to.eq(111)
     expect(maxReward).to.eq(111)
@@ -127,7 +127,7 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(20).shl(128).div(10),
       secondsInsideInitial: 0,
       secondsInside: 0,
-      currentTime: 120
+      currentTime: 120,
     })
     expect(reward).to.eq(0)
     expect(maxReward).to.eq(0)
@@ -146,7 +146,7 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(20).shl(128).div(10),
       secondsInsideInitial: 0,
       secondsInside: 0,
-      currentTime: 120
+      currentTime: 120,
     })
     expect(reward).to.eq(0)
     expect(maxReward).to.eq(0)
@@ -165,7 +165,7 @@ describe('unit/RewardMath', () => {
       secondsPerLiquidityInsideX128: BigNumber.from(20).shl(128).div(10),
       secondsInsideInitial: 0,
       secondsInside: 0,
-      currentTime: 120
+      currentTime: 120,
     })
     expect(reward).to.eq(0)
     expect(maxReward).to.eq(0)
@@ -185,8 +185,8 @@ describe('unit/RewardMath', () => {
         secondsPerLiquidityInsideX128: BigNumber.from(20).shl(128).div(10),
         secondsInsideInitial: 0,
         secondsInside: 0,
-        currentTime: 99
-      })
+        currentTime: 99,
+      }),
     ).to.be.reverted
   })
 })

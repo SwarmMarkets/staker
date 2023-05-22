@@ -47,7 +47,7 @@ export const encodePriceSqrt = (reserve1: BigNumberish, reserve0: BigNumberish):
       .sqrt()
       .multipliedBy(new bn(2).pow(96))
       .integerValue(3)
-      .toString()
+      .toString(),
   )
 }
 
@@ -74,7 +74,7 @@ export async function snapshotGasCost(
     | Promise<BigNumber>
     | BigNumber
     | Contract
-    | Promise<Contract>
+    | Promise<Contract>,
 ): Promise<void> {
   const resolved = await x
   if ('deployTransaction' in resolved) {
@@ -143,5 +143,5 @@ export const erc20Wrap = async (x: string | TestERC20): Promise<TestERC20> => {
 export const makeTimestamps = (n: number, duration: number = 1_000, vesting: number = 0) => ({
   startTime: n + 100,
   endTime: n + 100 + duration,
-  vestingPeriod: vesting
+  vestingPeriod: vesting,
 })

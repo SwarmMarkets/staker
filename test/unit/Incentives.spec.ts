@@ -51,7 +51,7 @@ describe('unit/Incentives', async () => {
           incentiveCreator,
           params.rewardToken ? await erc20Wrap(params?.rewardToken) : context.rewardToken,
           totalReward,
-          context.staker.address
+          context.staker.address,
         )
 
         const { startTime, endTime, vestingPeriod } = makeTimestamps(await blockTimestamp())
@@ -65,7 +65,7 @@ describe('unit/Incentives', async () => {
             vestingPeriod: params.vestingPeriod || vestingPeriod,
             refundee: params.refundee || incentiveCreator.address,
           },
-          totalReward
+          totalReward,
         )
       }
     })
@@ -91,7 +91,7 @@ describe('unit/Incentives', async () => {
             endTime,
             vestingPeriod,
             incentiveCreator.address,
-            totalReward
+            totalReward,
           )
       })
 
@@ -125,9 +125,12 @@ describe('unit/Incentives', async () => {
           vestingPeriod: params.vestingPeriod,
           refundee: incentiveCreator.address,
         })
-        const { totalRewardUnclaimed, totalRewardLocked, totalSecondsClaimedX128, numberOfStakes } = await context.staker.incentives(
-          incentiveId
-        )
+        const {
+          totalRewardUnclaimed,
+          totalRewardLocked,
+          totalSecondsClaimedX128,
+          numberOfStakes,
+        } = await context.staker.incentives(incentiveId)
         expect(totalRewardUnclaimed).to.equal(totalReward.mul(2))
         expect(totalRewardLocked).to.equal(0)
         expect(totalSecondsClaimedX128).to.equal(0)
@@ -147,7 +150,7 @@ describe('unit/Incentives', async () => {
         await context.staker.connect(actors.lpUser0()).createIncentive(incentiveKey, 100)
         const incentiveId = await context.testIncentiveId.compute(incentiveKey)
         let { totalRewardUnclaimed, totalSecondsClaimedX128, numberOfStakes } = await context.staker.incentives(
-          incentiveId
+          incentiveId,
         )
         expect(totalRewardUnclaimed).to.equal(100)
         expect(totalSecondsClaimedX128).to.equal(0)
@@ -197,8 +200,8 @@ describe('unit/Incentives', async () => {
               vestingPeriod,
               refundee: incentiveCreator.address,
             },
-            totalReward
-          )
+            totalReward,
+          ),
         ).to.be.revertedWith('TransferHelperExtended::safeTransferFrom: call to non-contract')
       })
 
@@ -215,7 +218,7 @@ describe('unit/Incentives', async () => {
           expect(now).to.be.lessThan(params.endTime, 'test setup: after end time')
 
           await expect(subject(params)).to.be.revertedWith(
-            'UniswapV3Staker::createIncentive: start time must be now or in the future'
+            'UniswapV3Staker::createIncentive: start time must be now or in the future',
           )
         })
 
@@ -223,14 +226,14 @@ describe('unit/Incentives', async () => {
           const params = makeTimestamps(await blockTimestamp())
           params.endTime = params.startTime - 10
           await expect(subject(params)).to.be.revertedWith(
-            'UniswapV3Staker::createIncentive: start time must be before end time'
+            'UniswapV3Staker::createIncentive: start time must be before end time',
           )
         })
 
         it('start time is too far into the future', async () => {
           const params = makeTimestamps((await blockTimestamp()) + 2 ** 32 + 1)
           await expect(subject(params)).to.be.revertedWith(
-            'UniswapV3Staker::createIncentive: start time too far into future'
+            'UniswapV3Staker::createIncentive: start time too far into future',
           )
         })
 
@@ -238,14 +241,14 @@ describe('unit/Incentives', async () => {
           const params = makeTimestamps(await blockTimestamp())
           params.endTime = params.startTime + 2 ** 32 + 1
           await expect(subject(params)).to.be.revertedWith(
-            'UniswapV3Staker::createIncentive: incentive duration is too long'
+            'UniswapV3Staker::createIncentive: incentive duration is too long',
           )
         })
 
         it('vesting period is gt then incentive duration', async () => {
           const params = makeTimestamps(await blockTimestamp(), 100, 101)
           await expect(subject(params)).to.be.revertedWith(
-            'UniswapV3Staker::createIncentive: vesting time must be lte incentive duration'
+            'UniswapV3Staker::createIncentive: vesting time must be lte incentive duration',
           )
         })
       })
@@ -262,8 +265,8 @@ describe('unit/Incentives', async () => {
                 refundee: incentiveCreator.address,
                 ...makeTimestamps(now, 1_000),
               },
-              BNe18(0)
-            )
+              BNe18(0),
+            ),
           ).to.be.revertedWith('UniswapV3Staker::createIncentive: reward must be positive')
         })
       })
@@ -314,7 +317,7 @@ describe('unit/Incentives', async () => {
         await Time.set(timestamps.endTime + 1)
         await subject({})
         const { totalRewardUnclaimed, totalSecondsClaimedX128, numberOfStakes } = await context.staker.incentives(
-          incentiveId
+          incentiveId,
         )
         expect(totalRewardUnclaimed).to.eq(0)
         expect(totalSecondsClaimedX128).to.eq(0)
@@ -331,7 +334,7 @@ describe('unit/Incentives', async () => {
       it('block.timestamp <= end time', async () => {
         await Time.set(timestamps.endTime - 10)
         await expect(subject({})).to.be.revertedWith(
-          'UniswapV3Staker::endIncentive: cannot end incentive before end time'
+          'UniswapV3Staker::endIncentive: cannot end incentive before end time',
         )
       })
 
@@ -341,7 +344,7 @@ describe('unit/Incentives', async () => {
         await expect(
           subject({
             startTime: (await blockTimestamp()) + 1000,
-          })
+          }),
         ).to.be.revertedWith('UniswapV3Staker::endIncentive: no refund available')
       })
 
@@ -360,7 +363,7 @@ describe('unit/Incentives', async () => {
         // Adjust the block.timestamp so it is after the claim deadline
         await Time.set(timestamps.endTime + 1)
         await expect(subject({})).to.be.revertedWith(
-          'UniswapV3Staker::endIncentive: cannot end incentive while deposits are staked'
+          'UniswapV3Staker::endIncentive: cannot end incentive while deposits are staked',
         )
       })
     })

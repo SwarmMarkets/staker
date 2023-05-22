@@ -2,14 +2,14 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol';
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
-import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol';
-import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
-import '@uniswap/v3-core/contracts/interfaces/IERC20Minimal.sol';
+import "@uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol";
+import "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol";
+import "@uniswap/v3-core/contracts/interfaces/IERC20Minimal.sol";
 
-import '@uniswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol';
-import '@uniswap/v3-periphery/contracts/interfaces/IMulticall.sol';
+import "@uniswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol";
+import "@uniswap/v3-periphery/contracts/interfaces/IMulticall.sol";
 
 /// @title Uniswap V3 Staker Interface
 /// @notice Allows staking nonfungible liquidity tokens in exchange for reward tokens
@@ -81,9 +81,14 @@ interface IUniswapV3Staker is IERC721Receiver, IMulticall {
     function stakes(uint256 tokenId, bytes32 incentiveId)
         external
         view
-        returns (uint160 secondsPerLiquidityInsideInitialX128, uint32 secondsInsideInitial, uint128 liquidity);
+        returns (
+            uint160 secondsPerLiquidityInsideInitialX128,
+            uint32 secondsInsideInitial,
+            uint128 liquidity
+        );
 
-    /// @notice Returns amounts of reward tokens owed to a given address according to the last time all stakes were updated
+    /// @notice Returns amounts of reward tokens owed to a given address according
+    /// to the last time all stakes were updated
     /// @param rewardToken The token for which to check rewards
     /// @param owner The owner for which the rewards owed are checked
     /// @return rewardsOwed The amount of the reward token claimable by the owner
@@ -142,7 +147,11 @@ interface IUniswapV3Staker is IERC721Receiver, IMulticall {
     /// @return maxReward The reward accrued to the NFT for the given incentive thus far
     function getRewardInfo(IncentiveKey memory key, uint256 tokenId)
         external
-        returns (uint256 reward, uint256 maxReward, uint160 secondsInsideX128);
+        returns (
+            uint256 reward,
+            uint256 maxReward,
+            uint160 secondsInsideX128
+        );
 
     /// @notice Event emitted when a liquidity mining incentive has been created
     /// @param rewardToken The token being distributed as a reward

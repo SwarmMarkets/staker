@@ -19,10 +19,10 @@ export const linkLibraries = (
       }
     }
   },
-  libraries: { [libraryName: string]: string }
+  libraries: { [libraryName: string]: string },
 ): string => {
-  Object.keys(linkReferences).forEach((fileName) => {
-    Object.keys(linkReferences[fileName]).forEach((contractName) => {
+  Object.keys(linkReferences).forEach(fileName => {
+    Object.keys(linkReferences[fileName]).forEach(contractName => {
       if (!libraries.hasOwnProperty(contractName)) {
         throw new Error(`Missing link library name ${contractName}`)
       }

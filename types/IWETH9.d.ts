@@ -64,7 +64,7 @@ export class IWETH9 extends Contract {
     allowance(
       owner: string,
       spender: string,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<{
       0: BigNumber
     }>
@@ -72,7 +72,7 @@ export class IWETH9 extends Contract {
     'allowance(address,address)'(
       owner: string,
       spender: string,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<{
       0: BigNumber
     }>
@@ -82,19 +82,19 @@ export class IWETH9 extends Contract {
     'approve(address,uint256)'(
       spender: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<ContractTransaction>
 
     balanceOf(
       account: string,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<{
       0: BigNumber
     }>
 
     'balanceOf(address)'(
       account: string,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<{
       0: BigNumber
     }>
@@ -104,13 +104,13 @@ export class IWETH9 extends Contract {
     'deposit()'(overrides?: PayableOverrides): Promise<ContractTransaction>
 
     totalSupply(
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<{
       0: BigNumber
     }>
 
     'totalSupply()'(
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<{
       0: BigNumber
     }>
@@ -120,21 +120,21 @@ export class IWETH9 extends Contract {
     'transfer(address,uint256)'(
       recipient: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<ContractTransaction>
 
     transferFrom(
       sender: string,
       recipient: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<ContractTransaction>
 
     'transferFrom(address,address,uint256)'(
       sender: string,
       recipient: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<ContractTransaction>
 
     withdraw(arg0: BigNumberish, overrides?: Overrides): Promise<ContractTransaction>
@@ -167,21 +167,21 @@ export class IWETH9 extends Contract {
   'transfer(address,uint256)'(
     recipient: string,
     amount: BigNumberish,
-    overrides?: Overrides
+    overrides?: Overrides,
   ): Promise<ContractTransaction>
 
   transferFrom(
     sender: string,
     recipient: string,
     amount: BigNumberish,
-    overrides?: Overrides
+    overrides?: Overrides,
   ): Promise<ContractTransaction>
 
   'transferFrom(address,address,uint256)'(
     sender: string,
     recipient: string,
     amount: BigNumberish,
-    overrides?: Overrides
+    overrides?: Overrides,
   ): Promise<ContractTransaction>
 
   withdraw(arg0: BigNumberish, overrides?: Overrides): Promise<ContractTransaction>
@@ -219,7 +219,7 @@ export class IWETH9 extends Contract {
       sender: string,
       recipient: string,
       amount: BigNumberish,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<boolean>
 
     withdraw(arg0: BigNumberish, overrides?: CallOverrides): Promise<void>
@@ -264,7 +264,7 @@ export class IWETH9 extends Contract {
       sender: string,
       recipient: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<BigNumber>
 
     withdraw(arg0: BigNumberish, overrides?: Overrides): Promise<BigNumber>
@@ -278,7 +278,7 @@ export class IWETH9 extends Contract {
     'allowance(address,address)'(
       owner: string,
       spender: string,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>
 
     approve(spender: string, amount: BigNumberish, overrides?: Overrides): Promise<PopulatedTransaction>
@@ -286,7 +286,7 @@ export class IWETH9 extends Contract {
     'approve(address,uint256)'(
       spender: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<PopulatedTransaction>
 
     balanceOf(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
@@ -306,21 +306,21 @@ export class IWETH9 extends Contract {
     'transfer(address,uint256)'(
       recipient: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<PopulatedTransaction>
 
     transferFrom(
       sender: string,
       recipient: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<PopulatedTransaction>
 
     'transferFrom(address,address,uint256)'(
       sender: string,
       recipient: string,
       amount: BigNumberish,
-      overrides?: Overrides
+      overrides?: Overrides,
     ): Promise<PopulatedTransaction>
 
     withdraw(arg0: BigNumberish, overrides?: Overrides): Promise<PopulatedTransaction>

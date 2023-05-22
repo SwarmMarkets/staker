@@ -64,7 +64,7 @@ describe('unit/Stakes', () => {
         lpUser0,
         [context.token0, context.token1],
         amountDesired,
-        context.nft.address
+        context.nft.address,
       )
 
       tokenId = await mintPosition(context.nft.connect(lpUser0), {
@@ -102,7 +102,7 @@ describe('unit/Stakes', () => {
             rewardToken: context.rewardToken.address,
             ...timestamps,
           },
-          _tokenId
+          _tokenId,
         )
     })
 
@@ -166,7 +166,7 @@ describe('unit/Stakes', () => {
         await Time.set(timestamps.startTime + 500)
         // lpUser2 calls, we're using lpUser0 elsewhere.
         await expect(subject(tokenId, actors.lpUser2())).to.be.revertedWith(
-          'UniswapV3Staker::stakeToken: only owner can stake token'
+          'UniswapV3Staker::stakeToken: only owner can stake token',
         )
       })
 
@@ -176,7 +176,7 @@ describe('unit/Stakes', () => {
           lpUser0,
           [context.token0, context.token1],
           amountDesired,
-          context.nft.address
+          context.nft.address,
         )
 
         const tokenId2 = await mintPosition(context.nft.connect(lpUser0), {
@@ -208,7 +208,7 @@ describe('unit/Stakes', () => {
           })
 
         await expect(subject(tokenId2, lpUser0)).to.be.revertedWith(
-          'UniswapV3Staker::stakeToken: cannot stake token with 0 liquidity'
+          'UniswapV3Staker::stakeToken: cannot stake token with 0 liquidity',
         )
       })
 
@@ -237,8 +237,8 @@ describe('unit/Stakes', () => {
               rewardToken: context.rewardToken.address,
               ...timestamps,
             },
-            otherTokenId
-          )
+            otherTokenId,
+          ),
         ).to.be.revertedWith('UniswapV3Staker::stakeToken: token pool is not the incentive pool')
       })
 
@@ -254,8 +254,8 @@ describe('unit/Stakes', () => {
               ...timestamps,
               startTime: timestamps.startTime + 10,
             },
-            tokenId
-          )
+            tokenId,
+          ),
         ).to.be.revertedWith('UniswapV3Staker::stakeToken: non-existent incentive')
       })
 
@@ -304,7 +304,7 @@ describe('unit/Stakes', () => {
           totalReward,
           poolAddress: context.poolObj.address,
           ...timestamps,
-        })
+        }),
       )
 
       await Time.set(timestamps.startTime)
@@ -348,7 +348,7 @@ describe('unit/Stakes', () => {
       await Time.setAndMine(timestamps.endTime + 1)
 
       await expect(context.staker.connect(lpUser0).getRewardInfo(stakeIncentiveKey, '100')).to.be.revertedWith(
-        'UniswapV3Staker::getRewardInfo: stake does not exist'
+        'UniswapV3Staker::getRewardInfo: stake does not exist',
       )
     })
   })
@@ -391,7 +391,7 @@ describe('unit/Stakes', () => {
           pool: context.pool01,
           ...timestamps,
         },
-        tokenId
+        tokenId,
       )
 
       claimable = await context.staker.rewards(context.rewardToken.address, lpUser0.address)
@@ -496,7 +496,7 @@ describe('unit/Stakes', () => {
         lpUser0,
         [context.token0, context.token1],
         amountDesired,
-        context.nft.address
+        context.nft.address,
       )
 
       tokenId = await mintPosition(context.nft.connect(lpUser0), {
@@ -526,7 +526,7 @@ describe('unit/Stakes', () => {
           pool: context.pool01,
           ...timestamps,
         },
-        tokenId
+        tokenId,
       )
 
       incentiveId = await helpers.getIncentiveId(createIncentiveResult)
@@ -539,7 +539,7 @@ describe('unit/Stakes', () => {
             rewardToken: context.rewardToken.address,
             ...timestamps,
           },
-          tokenId
+          tokenId,
         )
     })
 
@@ -611,7 +611,7 @@ describe('unit/Stakes', () => {
 
       it('you have not staked', async () => {
         await expect(subject(actors.lpUser2())).to.revertedWith(
-          'UniswapV3Staker::unstakeToken: only owner can withdraw token'
+          'UniswapV3Staker::unstakeToken: only owner can withdraw token',
         )
       })
 

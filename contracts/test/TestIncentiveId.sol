@@ -2,9 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '../interfaces/IUniswapV3Staker.sol';
+import "../interfaces/IUniswapV3Staker.sol";
 
-import '../libraries/IncentiveId.sol';
+import "../libraries/IncentiveId.sol";
 
 /// @dev Test contract for IncentiveId
 contract TestIncentiveId {

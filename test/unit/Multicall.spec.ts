@@ -50,7 +50,7 @@ describe('unit/Multicall', () => {
       multicaller,
       [context.token0, context.token1],
       amountDesired,
-      context.nft.address
+      context.nft.address,
     )
     await mintPosition(context.nft.connect(multicaller), {
       token0: context.token0.address,
@@ -202,7 +202,7 @@ describe('unit/Multicall', () => {
     const { tokenId: tokenId1 } = await helpers.mintDepositStakeFlow(params)
     const { tokenId: tokenId2 } = await helpers.mintDepositStakeFlow(params)
 
-    const unstake = (tokenId) =>
+    const unstake = tokenId =>
       context.staker.interface.encodeFunctionData('unstakeToken', [incentiveResultToStakeAdapter(incentive), tokenId])
 
     await context.staker.connect(multicaller).multicall([unstake(tokenId0), unstake(tokenId1), unstake(tokenId2)])

@@ -63,7 +63,7 @@ describe('integration', async () => {
       const epoch = await blockTimestamp()
 
       const {
-        tokens: [token0, token1, rewardToken]
+        tokens: [token0, token1, rewardToken],
       } = context
       const helpers = HelperCommands.fromTestContext(context, actors, provider)
 
@@ -78,7 +78,7 @@ describe('integration', async () => {
         vestingPeriod,
         rewardToken,
         poolAddress: context.pool01,
-        totalReward
+        totalReward,
       })
 
       const params = {
@@ -91,12 +91,12 @@ describe('integration', async () => {
       await Time.set(startTime + 1)
 
       const stakes = await Promise.all(
-        actors.lpUsers().map((lp) =>
+        actors.lpUsers().map(lp =>
           helpers.mintDepositStakeFlow({
             ...params,
             lp,
-          })
-        )
+          }),
+        ),
       )
 
       return {
@@ -119,7 +119,7 @@ describe('integration', async () => {
 
         // Sanity check: make sure we go past the incentive end time.
         expect(await blockTimestamp(), 'test setup: must be run after start time').to.be.gte(
-          createIncentiveResult.endTime
+          createIncentiveResult.endTime,
         )
 
         // Everyone pulls their liquidity at the same time
@@ -129,10 +129,10 @@ describe('integration', async () => {
               lp,
               tokenId,
               createIncentiveResult,
-            })
-          )
+            }),
+          ),
         )
-        const rewardsEarned = bnSum(unstakes.map((o) => o.balance))
+        const rewardsEarned = bnSum(unstakes.map(o => o.balance))
         log.debug('Total rewards ', rewardsEarned.toString())
 
         const { amountReturnedToCreator } = await helpers.endIncentiveFlow({
@@ -214,7 +214,7 @@ describe('integration', async () => {
             lp: lpUser0,
             tokenId: stakes[0].tokenId,
             createIncentiveResult: subject.createIncentiveResult,
-          })
+          }),
         )
 
         /*
@@ -237,8 +237,8 @@ describe('integration', async () => {
               lp,
               tokenId,
               createIncentiveResult,
-            })
-          )
+            }),
+          ),
         )
         unstakes.push(...otherUnstakes)
 
@@ -257,7 +257,7 @@ describe('integration', async () => {
         expect(ratioE18(unstakes[2].balance, unstakes[1].balance)).to.eq('1.00')
 
         // All should add up to totalReward
-        expect(bnSum(unstakes.map((u) => u.balance)).add(amountReturnedToCreator)).to.eq(totalReward)
+        expect(bnSum(unstakes.map(u => u.balance)).add(amountReturnedToCreator)).to.eq(totalReward)
       })
 
       describe('and then restakes at the 3/4 mark', () => {
@@ -292,7 +292,7 @@ describe('integration', async () => {
             lpUser0,
             [token0, token1],
             amountsToStake[0],
-            subject.context.router.address
+            subject.context.router.address,
           )
 
           const restake = await helpers.mintDepositStakeFlow({
@@ -331,7 +331,7 @@ describe('integration', async () => {
 
           const extraStake = await helpers.mintDepositStakeFlow({
             tokensToStake,
-            amountsToStake: amountsToStake.map((a) => a.div(2)) as [BigNumber, BigNumber],
+            amountsToStake: amountsToStake.map(a => a.div(2)) as [BigNumber, BigNumber],
             createIncentiveResult,
             ticks: ticksToStake,
             lp: lpUser3,
@@ -346,8 +346,8 @@ describe('integration', async () => {
                 lp,
                 tokenId,
                 createIncentiveResult,
-              })
-            )
+              }),
+            ),
           )
 
           expect(ratioE18(unstakes[2].balance, unstakes[3].balance)).to.eq('8.67')
@@ -356,7 +356,7 @@ describe('integration', async () => {
           const { amountReturnedToCreator } = await helpers.endIncentiveFlow({
             createIncentiveResult,
           })
-          expect(bnSum(unstakes.map((u) => u.balance)).add(amountReturnedToCreator)).to.eq(totalReward)
+          expect(bnSum(unstakes.map(u => u.balance)).add(amountReturnedToCreator)).to.eq(totalReward)
         })
       })
     })
@@ -378,7 +378,7 @@ describe('integration', async () => {
           lpUser3,
           [context.token0, context.token1],
           balanceDeposited,
-          context.nft.address
+          context.nft.address,
         )
 
         await mintPosition(context.nft.connect(lpUser3), {
@@ -403,8 +403,8 @@ describe('integration', async () => {
               lp,
               tokenId,
               createIncentiveResult,
-            })
-          )
+            }),
+          ),
         )
 
         /**
@@ -424,11 +424,11 @@ describe('integration', async () => {
          * each get 1/4 the liquidity for that time. So That's 1/4 * 1/2 * 3_000e18 per staked LP.
          * */
         const secondHalfRewards = totalReward.div(BN('2')).mul('3').div('4')
-        const rewardsEarned = bnSum(unstakes.map((s) => s.balance))
+        const rewardsEarned = bnSum(unstakes.map(s => s.balance))
         expect(rewardsEarned).to.be.closeTo(
           // @ts-ignore
           firstHalfRewards.add(secondHalfRewards),
-          BNe(10, 16) // add a bit more tolerance for not 100% vesting because of staking delay
+          BNe(10, 16), // add a bit more tolerance for not 100% vesting because of staking delay
         )
 
         // await Time.set(createIncentiveResult.endTime + 1)
@@ -518,15 +518,15 @@ describe('integration', async () => {
 
       Time.set(createIncentiveResult.startTime + 1)
       const stakes = await Promise.all(
-        positions.map((p) =>
+        positions.map(p =>
           helpers.mintDepositStakeFlow({
             lp: p.lp,
             tokensToStake,
             ticks: p.ticks,
             amountsToStake: p.amounts,
             createIncentiveResult,
-          })
-        )
+          }),
+        ),
       )
 
       const trader = actors.traderUser0()
@@ -579,7 +579,7 @@ describe('integration', async () => {
           lp: stakes[2].lp,
           tokenId: stakes[2].tokenId,
           createIncentiveResult,
-        })
+        }),
       ).to.be.reverted
     })
   })
