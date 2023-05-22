@@ -1,5 +1,4 @@
 import hre from 'hardhat'
-import { ignoreAlreadyVerifiedError } from './ignore-already-verified-error'
 
 export const verifyContract = async (address: string, constructorArguments: Array<unknown> = []): Promise<void> => {
   console.log(`Trying to verifying ${address}\n`)
@@ -12,5 +11,15 @@ export const verifyContract = async (address: string, constructorArguments: Arra
   } catch (err: any) {
     console.log('Verification failed!!!')
     ignoreAlreadyVerifiedError(err)
+  }
+}
+
+const ignoreAlreadyVerifiedError = (err: Error): void => {
+  if (err.message.includes('Already Verified')) {
+    console.log('Contract already verified, skipping')
+
+    return
+  } else {
+    throw err
   }
 }
