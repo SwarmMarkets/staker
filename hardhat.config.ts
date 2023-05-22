@@ -1,4 +1,4 @@
-import '@nomicfoundation/hardhat-toolbox';
+import '@nomicfoundation/hardhat-toolbox'
 import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-etherscan'
 import '@nomiclabs/hardhat-waffle'
