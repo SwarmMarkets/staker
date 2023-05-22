@@ -30,6 +30,8 @@
     "@uniswap/v3-periphery": "^1.0.1"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
@@ -42,7 +44,7 @@
     "@types/mocha": "^5.2.7",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
-    "chai": "^4.2.0",
+    "chai": "^4.3.7",
     "console-log-level": "^1.4.1",
     "dotenv": "^16.0.3",
     "eslint": "^7.28.0",
@@ -52,6 +54,7 @@
     "ethers": "^5.0.8",
     "hardhat": "^2.2.0",
     "hardhat-contract-sizer": "^2.0.3",
+    "hardhat-gas-reporter": "^1.0.9",
     "lodash": "^4.17.21",
     "mocha-chai-jest-snapshot": "^1.1.0",
     "prettier": "^2.2.1",
